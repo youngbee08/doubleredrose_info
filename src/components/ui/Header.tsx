@@ -93,7 +93,7 @@ const Header = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[70] md:hidden"
+            className="fixed inset-0 z-70 md:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -164,7 +164,7 @@ const Header = () => {
                 </Link>
 
                 <a
-                  href="https://wa.me/2347081754972?text=Hi%20there,%20I'd%20like%20to%20learn%20more."
+                  href="https://wa.me/2348140041861?text=Hi%20there,%20I'd%20like%20to%20learn%20more."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block mt-3 w-full text-center rounded-xl bg-black/5 hover:bg-black/10 px-4 py-3 text-xs font-semibold text-tetiary transition"
