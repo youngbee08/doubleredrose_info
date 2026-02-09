@@ -193,7 +193,7 @@ const Home: React.FC = () => {
       icon: <FaShieldAlt className="text-base" />,
       title: "Trusted Wellness Brand",
       description:
-        "Used by partners across multiple regions, VitaRose is built on trust and transparency.",
+        "Used by partners across multiple regions, Double Red Rose is built on trust and transparency.",
     },
   ];
 
