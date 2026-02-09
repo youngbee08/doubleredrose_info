@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
-import navitems from "../../lib/navitems";
 import { AnimatePresence, motion } from "framer-motion";
+import navitems from "../../lib/navitems";
 
 const Header = () => {
   const location = useLocation();
@@ -28,7 +28,6 @@ const Header = () => {
         transition={{ duration: 0.25, ease: "easeOut" }}
       >
         <nav className="app-container h-14 flex items-center gap-3">
-          {/* Left: mobile menu + brand */}
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => setOpen(true)}
@@ -49,7 +48,6 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Center nav (desktop) */}
           <div className="hidden md:flex flex-1 items-center justify-center gap-8">
             {navitems.map((item) => {
               const active = location.pathname === item.path;
@@ -68,7 +66,7 @@ const Header = () => {
                   {active && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute -bottom-2 left-0 right-0 mx-auto h-[2px] w-6 rounded-full bg-primary"
+                      className="absolute -bottom-2 left-0 right-0 mx-auto h-0.5 w-6 rounded-full bg-primary"
                       transition={{ duration: 0.25, ease: "easeOut" }}
                     />
                   )}
@@ -77,7 +75,6 @@ const Header = () => {
             })}
           </div>
 
-          {/* Right CTA (desktop) */}
           <div className="hidden md:flex justify-end">
             <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
               <Link
@@ -89,12 +86,10 @@ const Header = () => {
             </motion.div>
           </div>
 
-          {/* Mobile right spacer */}
           <div className="md:hidden ml-auto w-10" aria-hidden="true" />
         </nav>
       </motion.div>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -103,7 +98,6 @@ const Header = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {/* Overlay */}
             <motion.div
               onClick={() => setOpen(false)}
               className="absolute inset-0 bg-black/50"
@@ -112,7 +106,6 @@ const Header = () => {
               exit={{ opacity: 0 }}
             />
 
-            {/* Panel */}
             <motion.aside
               className="absolute left-0 top-0 h-full w-[85%] max-w-sm bg-white shadow-2xl"
               initial={{ x: "-100%" }}

@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import About from "./pages/About";
 import Affiliate from "./pages/Affiliate";
 import Contact from "./pages/Contact";
+import Purchase from "./pages/Purchase";
 
 const App: React.FC = () => {
   return (
@@ -43,6 +44,14 @@ const App: React.FC = () => {
           element={
             <MainLayout>
               <Contact />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/purchase-product"
+          element={
+            <MainLayout>
+              <Purchase />
             </MainLayout>
           }
         />

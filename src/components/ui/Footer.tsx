@@ -6,7 +6,6 @@ const Footer = () => {
 
   return (
     <footer className="mt-16 lg:mt-20">
-      {/* CTA Card */}
       <section className="app-container">
         <motion.div
           className="rounded-4xl border border-white/15 bg-linear-to-r from-primary to-primary-deep px-5 sm:px-8 lg:px-12 py-10 lg:py-12 shadow-2xl"
@@ -78,8 +77,6 @@ const Footer = () => {
           </div>
         </motion.div>
       </section>
-
-      {/* Full-width bottom bar (no radius) */}
       <section className="mt-10 border-t border-secondary-dark/60 bg-white">
         <div className="app-container py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-xs font-semibold text-neutral-soft">

@@ -29,14 +29,12 @@ const WhatsAppFloat: React.FC = () => {
           exit={{ opacity: 0, y: 14, scale: 0.98 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
         >
-          {/* Premium glow */}
           <motion.span
             className="absolute -inset-2 rounded-full blur-xl bg-primary/20 opacity-0"
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.2 }}
           />
 
-          {/* Button */}
           <motion.span
             className={[
               "relative",
@@ -50,13 +48,11 @@ const WhatsAppFloat: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* tiny red ring like your header style */}
             <span className="absolute inset-0 rounded-full ring-2 ring-primary/10" />
 
             <FaWhatsapp className="relative text-[#25D366] text-xl sm:text-2xl" />
           </motion.span>
 
-          {/* Tooltip (shows on button hover) */}
           <motion.span
             className={[
               "hidden md:block",
@@ -74,7 +70,6 @@ const WhatsAppFloat: React.FC = () => {
             Chat on WhatsApp
           </motion.span>
 
-          {/* Tooltip trigger using group hover */}
           <style>{`
             .group:hover > span:last-child {
               opacity: 1 !important;
