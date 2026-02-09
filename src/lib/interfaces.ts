@@ -36,3 +36,12 @@ export interface WhyChooseCardProps {
   title: string;
   description: string;
 }
+
+export interface LegCardProps {
+  tag: string;
+  title: string;
+  description: string;
+  cta: string;
+  href?: string;
+  onClick?: () => void;
+}

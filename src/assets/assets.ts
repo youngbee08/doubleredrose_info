@@ -11,6 +11,9 @@ import jujube from "./images/jujube.jpg";
 import ginseng from "./images/ginseng.jpg";
 import honey from "./images/honey.jpg";
 import lemon from "./images/lemon.jpg";
+import about from "./images/about.png";
+import member from "./images/member.png";
+import regPackages from "./images/Business_Registration_Packages.pdf";
 
 const assets = {
   logo1,
@@ -26,5 +29,8 @@ const assets = {
   ginseng,
   honey,
   lemon,
+  about,
+  member,
+  regPackages,
 };
 export default assets;
