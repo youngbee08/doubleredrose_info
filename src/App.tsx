@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Affiliate from "./pages/Affiliate";
 import Contact from "./pages/Contact";
 import Purchase from "./pages/Purchase";
+import PaymentStatus from "./pages/PaymentStatusPage";
 
 const App: React.FC = () => {
   return (
@@ -52,6 +53,14 @@ const App: React.FC = () => {
           element={
             <MainLayout>
               <Purchase />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/payment-status"
+          element={
+            <MainLayout>
+              <PaymentStatus />
             </MainLayout>
           }
         />

@@ -28,7 +28,10 @@ import WhyChooseCard from "../components/common/WhyChooseCard";
 import FaqCard from "../components/common/FaqCard";
 
 const Home: React.FC = () => {
-  const [productCount, setProductCount] = useState(1);
+  const savedCount = sessionStorage.getItem("productCount");
+  const [productCount, setProductCount] = useState(
+    savedCount ? +savedCount : 1,
+  );
   const navigate = useNavigate();
   const [showUSD, setShowUSD] = useState(false);
 

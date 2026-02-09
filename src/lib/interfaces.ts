@@ -45,3 +45,18 @@ export interface LegCardProps {
   href?: string;
   onClick?: () => void;
 }
+
+export type OrderStatus = "pending" | "verified";
+
+export interface PendingOrder {
+  orderId: string;
+  productName: string;
+  unitPrice: number;
+  qty: number;
+  amount: number;
+  fullName: string;
+  address: string;
+  dateISO: string;
+  status: OrderStatus;
+  receiptFileName?: string;
+}
