@@ -1,40 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HiArrowRight } from "react-icons/hi";
 
 const NotFound: React.FC = () => {
   return (
-    <div className="min-h-screen bg-neutral-soft text-white flex items-center justify-center px-4">
-      <div className="max-w-lg w-full text-center flex flex-col gap-6">
-        <h1 className="text-7xl sm:text-8xl font-extrabold text-primary">
-          404
-        </h1>
+    <div className="min-h-screen bg-neutral-soft/30 flex items-center justify-center px-4">
+      <div className="w-full max-w-xl">
+        <div className="rounded-3xl border border-secondary-dark/70 bg-white shadow-xl shadow-black/10 p-6 sm:p-10 text-center">
+          <div className="mx-auto mb-6 h-1.5 w-16 rounded-full bg-primary" />
 
-        <div className="flex flex-col gap-2">
-          <h2 className="text-xl sm:text-2xl font-semibold">Page not found</h2>
-          <p className="text-sm sm:text-base text-white/70">
-            The page you’re looking for doesn’t exist or may have been moved.
+          <h1 className="font-display text-6xl sm:text-7xl lg:text-8xl font-extrabold text-primary leading-none">
+            404
+          </h1>
+
+          <div className="mt-4">
+            <h2 className="font-display text-xl sm:text-2xl font-extrabold text-tetiary">
+              Page not found
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-neutral-soft max-w-md mx-auto">
+              The page you’re looking for doesn’t exist, may have been moved, or
+              the link is incorrect.
+            </p>
+          </div>
+
+          <div className="mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+            <Link
+              to="/"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-md shadow-black/10 hover:brightness-110 transition"
+            >
+              Go back home
+              <HiArrowRight className="text-lg" />
+            </Link>
+          </div>
+
+          <p className="mt-7 text-[11px] sm:text-xs text-neutral-soft">
+            If you believe this is an error, please reach out and we’ll fix it.
           </p>
         </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
-          <Link
-            to="/"
-            className="rounded-full bg-linear-to-r from-primary to-accent px-6 py-2.5 text-sm font-semibold text-white shadow-md transition hover:brightness-110"
-          >
-            Go back home
-          </Link>
-
-          <Link
-            to="mailto:support@zenithdevtech.name.ng"
-            className="rounded-full border border-white/20 px-6 py-2.5 text-sm font-semibold text-white/80 hover:text-white hover:border-white/40 transition"
-          >
-            Contact support
-          </Link>
-        </div>
-
-        <p className="mt-6 text-xs text-white/50">
-          If you believe this is an error, please reach out and we’ll fix it.
-        </p>
       </div>
     </div>
   );
