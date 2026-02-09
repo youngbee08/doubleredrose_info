@@ -77,26 +77,30 @@ const About: React.FC = () => {
               <p className="text-neutral-soft font-medium text-xs lg:text-sm">
                 The human body functions as a connected system built from cells,
                 tissues, organs, and body systems, with healthy cells forming
-                the foundation of overall wellbeing. Every day, these cells are
-                exposed to internal and environmental stress that can affect how
-                the body performs and maintains balance over time.
+                the foundation of overall wellbeing. Each day, these cells are
+                exposed to metabolic and environmental stress that can affect
+                balance over time.
               </p>
 
               <p className="text-neutral-soft font-medium text-xs lg:text-sm">
-                Antioxidants play an important role in supporting cellular
-                protection by neutralizing free radicals and reducing oxidative
-                stress. One of the body’s key antioxidants, glutathione,
-                supports cellular balance, immune function, and natural detox
-                processes, helping maintain healthy cellular activity as the
-                body responds to daily demands.
+                Antioxidants help protect cells by neutralizing free radicals
+                and reducing oxidative stress. A key antioxidant produced by the
+                body is{" "}
+                <span className="font-semibold text-primary">glutathione</span>,
+                which supports immune balance, detox processes, and cellular
+                stability.{" "}
+                <span className="font-semibold text-primary">
+                  N-Acetyl Cysteine (NAC)
+                </span>{" "}
+                supports glutathione production by supplying cysteine, helping
+                maintain strong antioxidant defenses.
               </p>
 
               <p className="text-neutral-soft font-medium text-xs lg:text-sm">
-                Double Red Rose is thoughtfully formulated to support
-                antioxidant activity at the cellular level. By helping protect
-                cells from oxidative stress and supporting glutathione-related
-                functions, it contributes to healthier tissues, stronger organs,
-                balanced body systems, and consistent daily wellness.
+                Double Red Rose is formulated to support antioxidant activity at
+                the cellular level, helping protect cells from oxidative stress,
+                support glutathione-related functions, and promote healthier
+                tissues, organs, and overall wellness.
               </p>
             </div>
           </div>
