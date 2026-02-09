@@ -11,6 +11,7 @@ import jujube from "./images/jujube.jpg";
 import ginseng from "./images/ginseng.jpg";
 import honey from "./images/honey.jpg";
 import lemon from "./images/lemon.jpg";
+import nac from "./images/nac.jpg";
 import about from "./images/about.png";
 import member from "./images/member.png";
 import regPackages from "./images/Business_Registration_Packages.pdf";
@@ -29,6 +30,7 @@ const assets = {
   ginseng,
   honey,
   lemon,
+  nac,
   about,
   member,
   regPackages,
