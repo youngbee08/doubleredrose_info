@@ -259,7 +259,7 @@ const PurchasePage: React.FC = () => {
                   onClick={handleCopyAccountNumber}
                   className="shrink-0 inline-flex items-center justify-center gap-2 rounded-xl border border-secondary-dark/70 bg-white px-4 py-2 text-xs font-bold text-tetiary hover:bg-secondary/30 transition"
                 >
-                  <HiOutlineClipboardCopy className="text-lg" />
+                  <HiOutlineClipboardCopy className="hidden lg:flex text-lg" />
                   Copy
                 </button>
               </div>
