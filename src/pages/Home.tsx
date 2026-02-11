@@ -84,7 +84,7 @@ const Home: React.FC = () => {
       name: "Share & Grow",
       id: "3",
       detail:
-        "Recommend the product, share your referral link, and earn as your network grows.",
+        "Recommend Double Red Rose to others, share your referral link confidently, and earn consistent rewards as your network expands and your impact grows.",
     },
   ];
 
@@ -271,7 +271,7 @@ const Home: React.FC = () => {
               business owners today.
             </p>
           </div>
-          <div className="border border-neutral-soft/20 rounded-2xl bg-white shadow flex flex-col gap-3 px-5 py-3 w-full lg:w-[55%]">
+          <div className="border border-neutral-soft/20 rounded-2xl bg-white shadow flex flex-col gap-3 px-5 py-3 w-full lg:w-[55%] sm:w-1/2">
             <div
               className="flex flex-col gap-1 cursor-pointer"
               onClick={() => setShowUSD((prev) => !prev)}
@@ -285,8 +285,8 @@ const Home: React.FC = () => {
                 Free express shipping for orders over &#8358;1,000,000
               </p>
             </div>
-            <div className="flex items-center gap-2 w-full justify-between">
-              <div className="bg-neutral-soft/10 border border-neutral-soft/10 rounded-lg flex items-center gap-3 px-3 py-1 w-[35%] justify-between">
+            <div className="flex items-center gap-4 w-full lg:justify-between">
+              <div className="bg-neutral-soft/10 border border-neutral-soft/10 rounded-lg flex items-center gap-3 px-3 py-2 lg:w-[35%]  justify-between">
                 <button
                   className="text-neutral-dark text-sm font-semibold cursor-pointer"
                   onClick={() => manageProductQuantity("deduct")}
@@ -324,7 +324,7 @@ const Home: React.FC = () => {
             Key Benefits
           </h2>
         </div>
-        <div className="flex items-center gap-5 lg:flex-row flex-col">
+        <div className="flex lg:items-center gap-5 lg:flex-row flex-col">
           {benefits.map((benefit, index) => (
             <BenefitCard
               name={benefit.name}
@@ -342,7 +342,7 @@ const Home: React.FC = () => {
             How It Works
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-7 place-items-center">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-7 lg:place-items-center">
           {howItWorks.map((h) => (
             <HowItWorksCard
               key={h.id}
@@ -360,7 +360,7 @@ const Home: React.FC = () => {
             Premium Ingredients
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
           {ingredients.map((ingredient, index) => (
             <IngredientCard
               key={index}

@@ -15,6 +15,7 @@ import nac from "./images/nac.jpg";
 import about from "./images/about.png";
 import member from "./images/member.png";
 import regPackages from "./images/Business_Registration_Packages.pdf";
+import showcase from "./images/showcase.jpeg";
 
 const assets = {
   logo1,
@@ -34,5 +35,6 @@ const assets = {
   about,
   member,
   regPackages,
+  showcase,
 };
 export default assets;
