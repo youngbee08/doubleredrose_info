@@ -62,12 +62,6 @@ const About: React.FC = () => {
           />
         </div>
         <div className="flex flex-col gap-2 lg:gap-5 w-full lg:w-1/2">
-          <div className="lg:hidden w-full flex items-center gap-2">
-            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-            <h2 className="text-xl lg:text-2xl  text-primary font-semibold">
-              Product Overview{" "}
-            </h2>
-          </div>
           <h1 className="text-neutral-dark text-2xl lg:text-5xl font-semibold">
             Crafted for Daily Wellness{" "}
           </h1>
@@ -109,11 +103,58 @@ const About: React.FC = () => {
       <section className="flex flex-col gap-6 lg:gap-12">
         <div className="w-full flex items-center gap-2">
           <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+          <h2 className="text-xl lg:text-2xl text-neutral-dark font-semibold">
+            The Product
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="relative w-full flex justify-center">
+            <div className="absolute inset-0 bg-primary/10 blur-3xl opacity-40 rounded-full" />
+
+            <div className="relative w-full lg:max-w-md rounded-2xl border border-secondary-dark/70 bg-white shadow-xl shadow-black/10">
+              <img
+                src={assets.showcase}
+                alt="Double Red Rose Product"
+                className="w-full object-contain rounded-2xl"
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h3 className="text-2xl lg:text-3xl font-semibold text-neutral-dark">
+              Double Red Rose
+            </h3>
+
+            <p className="text-xs lg:text-sm text-neutral-soft leading-relaxed">
+              A carefully formulated blend of powerful red botanicals and
+              antioxidant-rich extracts designed to support cellular protection,
+              immune balance, and overall vitality.
+            </p>
+
+            <ul className="flex flex-col gap-2 text-xs lg:text-sm text-neutral-soft">
+              <li>• Supports antioxidant defense</li>
+              <li>• Promotes cellular protection</li>
+              <li>• Supports glutathione activity</li>
+              <li>• Designed for consistent daily wellness</li>
+            </ul>
+
+            <div>
+              <span className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-white shadow-md">
+                Daily Wellness Formula
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="flex flex-col gap-6 lg:gap-12">
+        <div className="w-full flex items-center gap-2">
+          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
           <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
             Core Values
           </h2>
         </div>
-        <div className="flex items-center gap-5 lg:flex-row flex-col">
+        <div className="flex lg:items-center gap-5 lg:flex-row flex-col">
           {values.map((value, index) => (
             <BenefitCard
               name={value.name}

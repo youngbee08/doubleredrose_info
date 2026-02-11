@@ -79,7 +79,7 @@ const Header = () => {
             <motion.div whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}>
               <Link
                 to="tel:+234814 004 1861"
-                className="inline-flex items-center justify-center h-10 rounded-xl bg-primary text-white px-4 text-sm font-semibold hover:brightness-110 transition"
+                className=" items-center justify-center h-10 rounded-xl bg-primary text-white px-4 text-sm font-semibold hover:brightness-110 transition lg:inline-flex hidden"
               >
                 Schedule a Call
               </Link>
