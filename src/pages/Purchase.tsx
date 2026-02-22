@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 const WHATSAPP_NUMBER = "2348140041861";
 
 const BANK_DETAILS = {
-  bankName: "UBA",
-  accountName: "AFFLUENCE GLOBAL NUTRITION AND WELLNESS LTD",
-  accountNumber: "1026783434",
+  bankName: "OPAY",
+  accountName: "OYAGBOLA RISIKAT OLAKEMI",
+  accountNumber: "7085126887",
   branch: "POWA PLAZA, ABUJA",
 };
 
