@@ -39,10 +39,10 @@ const Header = () => {
             </motion.button>
 
             <Link to="/" className="flex flex-col leading-tight">
-              <span className="font-display text-base font-bold text-tetiary">
+              <span className="font-display text-lg font-bold text-tetiary">
                 RedRose by Gladys
               </span>
-              <span className="text-[11px] text-neutral-soft">
+              <span className="text-[14px] text-neutral-soft">
                 Affiliate business owner of Affluence Global
               </span>
             </Link>

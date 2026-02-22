@@ -60,3 +60,11 @@ export interface PendingOrder {
   status: OrderStatus;
   receiptFileName?: string;
 }
+
+export interface Review {
+  name: string;
+  title: string;
+  remark: string;
+  rating?: number;
+  source?: string;
+};

@@ -1,3 +1,4 @@
+import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import assets from "../assets/assets";
 import {
@@ -16,6 +17,7 @@ import type {
   HowItWorksCardProps,
   HowToUseCardProps,
   IngredientCardProps,
+  Review,
 } from "../lib/interfaces";
 import { GiCottonFlower } from "react-icons/gi";
 import { BiSolidZap } from "react-icons/bi";
@@ -26,6 +28,8 @@ import IngredientCard from "../components/common/IngredientsCard";
 import HowToUseCard from "../components/common/HowToUseCard";
 import WhyChooseCard from "../components/common/WhyChooseCard";
 import FaqCard from "../components/common/FaqCard";
+import Stars from "../components/common/Stars";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 const Home: React.FC = () => {
   const savedCount = sessionStorage.getItem("productCount");
@@ -219,6 +223,60 @@ const Home: React.FC = () => {
         "Simply reach out to us or follow the sign-up process. We’ll guide you step by step.",
     },
   ];
+
+  const reviews: Review[] = [
+    {
+      name: "Bekezela PRN",
+      title: "More strength & better rest",
+      remark:
+        "I’m grateful. After staying consistent, my mum felt noticeably stronger and more comfortable, and she slept well. We’re really happy with the experience.",
+      rating: 4,
+      source: "WhatsApp",
+    },
+    {
+      name: "Samuel Osei",
+      title: "Quick wellness support",
+      remark:
+        "After a few sachets, my wife felt much better and more active. This product has been a great support in our home.",
+      rating: 5,
+      source: "WhatsApp",
+    },
+    {
+      name: "Anima",
+      title: "Less tired after work",
+      remark:
+        "I used it consistently for several days and I felt less tired and more balanced after work. I can see why people recommend it.",
+      rating: 4,
+      source: "WhatsApp",
+    },
+    {
+      name: "Honorine Relax",
+      title: "Encouraging personal progress",
+      remark:
+        "A client shared very encouraging progress after staying consistent with Double Red Rose as part of her wellness routine. We’re grateful for the positive feedback and experience.",
+      rating: 5,
+      source: "WhatsApp",
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+
+  const visibleCount =
+    typeof window !== "undefined" && window.innerWidth >= 1024
+      ? 3
+      : typeof window !== "undefined" && window.innerWidth >= 768
+        ? 2
+        : 1;
+
+  const total = reviews.length;
+
+  const next = () => {
+    setIndex((prev) => (prev + 1) % total);
+  };
+
+  const prev = () => {
+    setIndex((prev) => (prev - 1 + total) % total);
+  };
 
   useEffect(() => {
     if (productCount > 1) {
@@ -422,6 +480,77 @@ const Home: React.FC = () => {
               answer={faq.answer}
             />
           ))}
+        </div>
+      </section>
+      <section className="relative flex flex-col gap-6 lg:gap-10">
+        <div className="relative overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.25 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
+            >
+              {reviews.slice(index, index + visibleCount).map((r) => (
+                <motion.article
+                  key={`${r.name}-${r.title}`}
+                  whileHover={{ y: -3 }}
+                  className="h-full rounded-3xl border border-secondary-dark/70 bg-white p-5 sm:p-6 transition"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col gap-1 min-w-0">
+                      <p className="font-display text-base font-extrabold text-tetiary truncate">
+                        {r.name}
+                      </p>
+                    </div>
+
+                    <Stars rating={r.rating} />
+                  </div>
+
+                  <h3 className="mt-4 font-display text-lg font-extrabold text-tetiary leading-tight">
+                    {r.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-neutral-soft leading-relaxed">
+                    “{r.remark}”
+                  </p>
+                </motion.article>
+              ))}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={prev}
+              className="h-10 w-10 rounded-full border border-secondary-dark/70 bg-white flex items-center justify-center hover:bg-primary hover:text-white transition"
+            >
+              <HiChevronLeft className="text-xl" />
+            </button>
+
+            <button
+              onClick={next}
+              className="h-10 w-10 rounded-full border border-secondary-dark/70 bg-white flex items-center justify-center hover:bg-primary hover:text-white transition"
+            >
+              <HiChevronRight className="text-xl" />
+            </button>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {reviews.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex(i)}
+                className={[
+                  "h-2.5 rounded-full transition-all duration-300",
+                  index === i ? "w-6 bg-primary" : "w-2.5 bg-secondary-dark",
+                ].join(" ")}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </div>
