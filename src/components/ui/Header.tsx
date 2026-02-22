@@ -27,7 +27,7 @@ const Header = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
       >
-        <nav className="app-container h-14 flex items-center gap-3">
+        <nav className="app-container h-16 flex items-center gap-3">
           <div className="flex items-center gap-3">
             <motion.button
               onClick={() => setOpen(true)}
