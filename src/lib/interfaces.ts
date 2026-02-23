@@ -67,4 +67,5 @@ export interface Review {
   remark: string;
   rating?: number;
   source?: string;
-};
+  attachment: string;
+}

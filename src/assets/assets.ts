@@ -14,8 +14,11 @@ import lemon from "./images/lemon.jpg";
 import nac from "./images/nac.jpg";
 import about from "./images/about.png";
 import member from "./images/member.png";
-import regPackages from "./images/Business_Registration_Packages.pdf";
 import showcase from "./images/showcase.jpeg";
+import att1 from "./images/att1.jpeg";
+import att2 from "./images/att2.jpeg";
+import att3 from "./images/att3.jpeg";
+import att4 from "./images/att4.jpeg";
 
 const assets = {
   logo1,
@@ -34,7 +37,10 @@ const assets = {
   nac,
   about,
   member,
-  regPackages,
   showcase,
+  att1,
+  att2,
+  att3,
+  att4,
 };
 export default assets;

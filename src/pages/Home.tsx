@@ -30,12 +30,14 @@ import WhyChooseCard from "../components/common/WhyChooseCard";
 import FaqCard from "../components/common/FaqCard";
 import Stars from "../components/common/Stars";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import AttachmentModal from "../components/Modals/AttachementModal";
 
 const Home: React.FC = () => {
   const savedCount = sessionStorage.getItem("productCount");
   const [productCount, setProductCount] = useState(
     savedCount ? +savedCount : 1,
   );
+  const [reviewAttachement, setReviewAttachement] = useState("");
   const navigate = useNavigate();
   const [showUSD, setShowUSD] = useState(false);
 
@@ -232,6 +234,7 @@ const Home: React.FC = () => {
         "I’m grateful. After staying consistent, my mum felt noticeably stronger and more comfortable, and she slept well. We’re really happy with the experience.",
       rating: 4,
       source: "WhatsApp",
+      attachment: assets.att1,
     },
     {
       name: "Samuel Osei",
@@ -240,6 +243,7 @@ const Home: React.FC = () => {
         "After a few sachets, my wife felt much better and more active. This product has been a great support in our home.",
       rating: 5,
       source: "WhatsApp",
+      attachment: assets.att2,
     },
     {
       name: "Anima",
@@ -248,6 +252,7 @@ const Home: React.FC = () => {
         "I used it consistently for several days and I felt less tired and more balanced after work. I can see why people recommend it.",
       rating: 4,
       source: "WhatsApp",
+      attachment: assets.att3,
     },
     {
       name: "Honorine Relax",
@@ -256,6 +261,7 @@ const Home: React.FC = () => {
         "A client shared very encouraging progress after staying consistent with Double Red Rose as part of her wellness routine. We’re grateful for the positive feedback and experience.",
       rating: 5,
       source: "WhatsApp",
+      attachment: assets.att4,
     },
   ];
 
@@ -285,275 +291,290 @@ const Home: React.FC = () => {
   }, [productCount]);
 
   return (
-    <div className="flex flex-col gap-10 lg:gap-14">
-      <section className="flex lg:flex-row flex-col gap-6 lg:gap-12 items-start">
-        <div className="w-full lg:w-1/2 h-full bg-neutral-soft/30 backdrop-blur-2xl rounded-2xl relative">
-          <img
-            src={assets.mockup}
-            alt="mockup-image"
-            className="w-full h-full object-cover rounded-2xl"
-          />
-          <span className="absolute top-3 right-6 bg-primary text-white rounded-2xl px-3 py-1 text-xs uppercase font-semibold">
-            in stock
-          </span>
-        </div>
-        <div className="flex flex-col gap-2 lg:gap-5 w-full lg:w-1/2">
-          <div className="flex items-center gap-1">
+    <>
+      <div className="flex flex-col gap-10 lg:gap-14">
+        <section className="flex lg:flex-row flex-col gap-6 lg:gap-12 items-start">
+          <div className="w-full lg:w-1/2 h-full bg-neutral-soft/30 backdrop-blur-2xl rounded-2xl relative">
+            <img
+              src={assets.mockup}
+              alt="mockup-image"
+              className="w-full h-full object-cover rounded-2xl"
+            />
+            <span className="absolute top-3 right-6 bg-primary text-white rounded-2xl px-3 py-1 text-xs uppercase font-semibold">
+              in stock
+            </span>
+          </div>
+          <div className="flex flex-col gap-2 lg:gap-5 w-full lg:w-1/2">
             <div className="flex items-center gap-1">
-              {[1, 2, 3, 4].map((_, index) => (
-                <FaStar
-                  key={index}
-                  className="w-2.75 text-primary font-semibold"
-                />
-              ))}
-              <FaStarHalf className="w-2.75 text-primary font-semibold" />
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4].map((_, index) => (
+                  <FaStar
+                    key={index}
+                    className="w-2.75 text-primary font-semibold"
+                  />
+                ))}
+                <FaStarHalf className="w-2.75 text-primary font-semibold" />
+              </div>
+              <h4 className="text-neutral-soft text-xs font-medium">
+                (4.8/5 from 1,200 + users)
+              </h4>
             </div>
-            <h4 className="text-neutral-soft text-xs font-medium">
-              (4.8/5 from 1,200 + users)
-            </h4>
-          </div>
-          <div className="flex flex-col">
-            <h1 className="text-neutral-dark text-2xl lg:text-5xl font-semibold">
-              Nourish Your Body.{" "}
-            </h1>
-            <h1 className="text-primary text-2xl lg:text-5xl font-semibold">
-              Elevate Your Lifestyle.{" "}
-            </h1>
-          </div>
-          <div className="w-full">
-            <p className="text-neutral-soft font-medium text-xs lg:text-sm">
-              Discover a premium wellness supplement crafted to support daily
-              vitality, immunity, and mental clarity. Made with carefully
-              selected botanicals and superfruits to help you perform at your
-              best every single day. Join our growing global community of
-              business owners today.
-            </p>
-          </div>
-          <div className="border border-neutral-soft/20 rounded-2xl bg-white shadow flex flex-col gap-3 px-5 py-3 w-full lg:w-[55%] sm:w-1/2">
-            <div
-              className="flex flex-col gap-1 cursor-pointer"
-              onClick={() => setShowUSD((prev) => !prev)}
-            >
-              <h3 className="text-xl font-semibold text-primary">
-                {showUSD
-                  ? `$${convertNairaToDollar(product.price * productCount)}`
-                  : `₦${(product.price * productCount).toLocaleString()}`}
-              </h3>
-              <p className="text-xs font-medium text-neutral-soft">
-                Free express shipping for orders over &#8358;1,000,000
+            <div className="flex flex-col">
+              <h1 className="text-neutral-dark text-2xl lg:text-5xl font-semibold">
+                Nourish Your Body.{" "}
+              </h1>
+              <h1 className="text-primary text-2xl lg:text-5xl font-semibold">
+                Elevate Your Lifestyle.{" "}
+              </h1>
+            </div>
+            <div className="w-full">
+              <p className="text-neutral-soft font-medium text-xs lg:text-sm">
+                Discover a premium wellness supplement crafted to support daily
+                vitality, immunity, and mental clarity. Made with carefully
+                selected botanicals and superfruits to help you perform at your
+                best every single day. Join our growing global community of
+                business owners today.
               </p>
             </div>
-            <div className="flex items-center gap-4 w-full lg:justify-between">
-              <div className="bg-neutral-soft/10 border border-neutral-soft/10 rounded-lg flex items-center gap-3 px-3 py-2 lg:w-[35%]  justify-between">
-                <button
-                  className="text-neutral-dark text-sm font-semibold cursor-pointer"
-                  onClick={() => manageProductQuantity("deduct")}
-                >
-                  -
-                </button>
-                <span className="text-neutral-dark text-sm font-semibold">
-                  {productCount}
-                </span>
-                <button
-                  className="text-neutral-dark text-sm font-semibold cursor-pointer"
-                  onClick={() => manageProductQuantity()}
-                >
-                  +
-                </button>
+            <div className="border border-neutral-soft/20 rounded-2xl bg-white shadow flex flex-col gap-3 px-5 py-3 w-full lg:w-[55%] sm:w-1/2">
+              <div
+                className="flex flex-col gap-1 cursor-pointer"
+                onClick={() => setShowUSD((prev) => !prev)}
+              >
+                <h3 className="text-xl font-semibold text-primary">
+                  {showUSD
+                    ? `$${convertNairaToDollar(product.price * productCount)}`
+                    : `₦${(product.price * productCount).toLocaleString()}`}
+                </h3>
+                <p className="text-xs font-medium text-neutral-soft">
+                  Free express shipping for orders over &#8358;1,000,000
+                </p>
               </div>
-              <div className="">
-                <button
-                  onClick={() => navigate("/purchase-product")}
-                  className="flex items-center gap-2 bg-primary text-white font-semibold text-sm rounded-lg px-3 py-2 cursor-pointer"
-                >
-                  <FaCartShopping size={15} />
-                  Buy Now
-                  <FaArrowRight size={12} />
-                </button>
+              <div className="flex items-center gap-4 w-full lg:justify-between">
+                <div className="bg-neutral-soft/10 border border-neutral-soft/10 rounded-lg flex items-center gap-3 px-3 py-2 lg:w-[35%]  justify-between">
+                  <button
+                    className="text-neutral-dark text-sm font-semibold cursor-pointer"
+                    onClick={() => manageProductQuantity("deduct")}
+                  >
+                    -
+                  </button>
+                  <span className="text-neutral-dark text-sm font-semibold">
+                    {productCount}
+                  </span>
+                  <button
+                    className="text-neutral-dark text-sm font-semibold cursor-pointer"
+                    onClick={() => manageProductQuantity()}
+                  >
+                    +
+                  </button>
+                </div>
+                <div className="">
+                  <button
+                    onClick={() => navigate("/purchase-product")}
+                    className="flex items-center gap-2 bg-primary text-white font-semibold text-sm rounded-lg px-3 py-2 cursor-pointer"
+                  >
+                    <FaCartShopping size={15} />
+                    Buy Now
+                    <FaArrowRight size={12} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="flex flex-col gap-6 lg:gap-12">
-        <div className="w-full flex items-center gap-2">
-          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-          <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
-            Key Benefits
-          </h2>
-        </div>
-        <div className="flex lg:items-center gap-5 lg:flex-row flex-col">
-          {benefits.map((benefit, index) => (
-            <BenefitCard
-              name={benefit.name}
-              icon={benefit.icon}
-              detail={benefit.detail}
-              key={index}
-            />
-          ))}
-        </div>
-      </section>
-      <section className="flex flex-col gap-6 lg:gap-12">
-        <div className="w-full flex items-center gap-2">
-          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-          <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
-            How It Works
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-7 lg:place-items-center">
-          {howItWorks.map((h) => (
-            <HowItWorksCard
-              key={h.id}
-              name={h.name}
-              id={h.id}
-              detail={h.detail}
-            />
-          ))}
-        </div>
-      </section>
-      <section className="flex flex-col gap-6 lg:gap-12">
-        <div className="w-full flex items-center gap-2">
-          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-          <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
-            Premium Ingredients
-          </h2>
-        </div>
-        <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
-          {ingredients.map((ingredient, index) => (
-            <IngredientCard
-              key={index}
-              title={ingredient.title}
-              image={ingredient.image}
-              description={ingredient.description}
-            />
-          ))}
-        </div>
-      </section>
-      <section className="flex flex-col gap-6 lg:gap-12">
-        <div className="w-full flex items-center gap-2">
-          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-          <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
-            How To Use
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-          {howToUse.map((item) => (
-            <HowToUseCard
-              key={item.step}
-              step={item.step}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
-        </div>
-      </section>
-      <section className="flex flex-col gap-6 lg:gap-12">
-        <div className="w-full flex items-center gap-2">
-          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-          <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
-            Why Choose us
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {whyChooseUs.map((item) => (
-            <WhyChooseCard
-              key={item.title}
-              icon={item.icon}
-              title={item.title}
-              description={item.description}
-            />
-          ))}
-        </div>
-      </section>
-      <section className="flex flex-col gap-6 lg:gap-12">
-        <div className="w-full flex items-center gap-2">
-          <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
-          <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
-            FAQs
-          </h2>
-        </div>
-        <div className="w-full mx-auto flex flex-col gap-3">
-          {faqs.map((faq) => (
-            <FaqCard
-              key={faq.question}
-              question={faq.question}
-              answer={faq.answer}
-            />
-          ))}
-        </div>
-      </section>
-      <section className="relative flex flex-col gap-6 lg:gap-10">
-        <div className="relative overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
-            >
-              {reviews.slice(index, index + visibleCount).map((r) => (
-                <motion.article
-                  key={`${r.name}-${r.title}`}
-                  whileHover={{ y: -3 }}
-                  className="h-full rounded-3xl border border-secondary-dark/70 bg-white p-5 sm:p-6 transition"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex flex-col gap-1 min-w-0">
-                      <p className="font-display text-base font-extrabold text-tetiary truncate">
-                        {r.name}
-                      </p>
-                    </div>
-
-                    <Stars rating={r.rating} />
-                  </div>
-
-                  <h3 className="mt-4 font-display text-lg font-extrabold text-tetiary leading-tight">
-                    {r.title}
-                  </h3>
-
-                  <p className="mt-2 text-sm text-neutral-soft leading-relaxed">
-                    “{r.remark}”
-                  </p>
-                </motion.article>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <button
-              onClick={prev}
-              className="h-10 w-10 rounded-full border border-secondary-dark/70 bg-white flex items-center justify-center hover:bg-primary hover:text-white transition"
-            >
-              <HiChevronLeft className="text-xl" />
-            </button>
-
-            <button
-              onClick={next}
-              className="h-10 w-10 rounded-full border border-secondary-dark/70 bg-white flex items-center justify-center hover:bg-primary hover:text-white transition"
-            >
-              <HiChevronRight className="text-xl" />
-            </button>
+        </section>
+        <section className="flex flex-col gap-6 lg:gap-12">
+          <div className="w-full flex items-center gap-2">
+            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+            <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
+              Key Benefits
+            </h2>
           </div>
-
-          <div className="flex items-center gap-2">
-            {reviews.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                className={[
-                  "h-2.5 rounded-full transition-all duration-300",
-                  index === i ? "w-6 bg-primary" : "w-2.5 bg-secondary-dark",
-                ].join(" ")}
+          <div className="flex lg:items-center gap-5 lg:flex-row flex-col">
+            {benefits.map((benefit, index) => (
+              <BenefitCard
+                name={benefit.name}
+                icon={benefit.icon}
+                detail={benefit.detail}
+                key={index}
               />
             ))}
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+        <section className="flex flex-col gap-6 lg:gap-12">
+          <div className="w-full flex items-center gap-2">
+            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+            <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
+              How It Works
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-7 lg:place-items-center">
+            {howItWorks.map((h) => (
+              <HowItWorksCard
+                key={h.id}
+                name={h.name}
+                id={h.id}
+                detail={h.detail}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="flex flex-col gap-6 lg:gap-12">
+          <div className="w-full flex items-center gap-2">
+            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+            <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
+              Premium Ingredients
+            </h2>
+          </div>
+          <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
+            {ingredients.map((ingredient, index) => (
+              <IngredientCard
+                key={index}
+                title={ingredient.title}
+                image={ingredient.image}
+                description={ingredient.description}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="flex flex-col gap-6 lg:gap-12">
+          <div className="w-full flex items-center gap-2">
+            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+            <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
+              How To Use
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+            {howToUse.map((item) => (
+              <HowToUseCard
+                key={item.step}
+                step={item.step}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="flex flex-col gap-6 lg:gap-12">
+          <div className="w-full flex items-center gap-2">
+            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+            <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
+              Why Choose us
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {whyChooseUs.map((item) => (
+              <WhyChooseCard
+                key={item.title}
+                icon={item.icon}
+                title={item.title}
+                description={item.description}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="flex flex-col gap-6 lg:gap-12">
+          <div className="w-full flex items-center gap-2">
+            <div className="w-1 h-6 bg-primary rounded-t-xl rounded-b-xl"></div>
+            <h2 className="text-xl lg:text-2xl  text-neutral-dark font-semibold">
+              FAQs
+            </h2>
+          </div>
+          <div className="w-full mx-auto flex flex-col gap-3">
+            {faqs.map((faq) => (
+              <FaqCard
+                key={faq.question}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
+          </div>
+        </section>
+        <section className="relative flex flex-col gap-6 lg:gap-10">
+          <div className="relative overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.25 }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6"
+              >
+                {reviews.slice(index, index + visibleCount).map((r) => (
+                  <motion.article
+                    key={`${r.name}-${r.title}`}
+                    whileHover={{ y: -3 }}
+                    className="h-full rounded-3xl border border-secondary-dark/70 bg-white p-5 sm:p-6 transition"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex flex-col gap-1 min-w-0">
+                        <p className="font-display text-base font-extrabold text-tetiary truncate">
+                          {r.name}
+                        </p>
+                      </div>
+
+                      <Stars rating={r.rating} />
+                    </div>
+
+                    <h3 className="mt-4 font-display text-lg font-extrabold text-tetiary leading-tight">
+                      {r.title}
+                    </h3>
+
+                    <p className="my-2 text-sm text-neutral-soft leading-relaxed">
+                      “{r.remark}”
+                    </p>
+
+                    <span
+                      onClick={() => setReviewAttachement(r.attachment)}
+                      className="cursor-pointer italic hover:underline text-xs text-primary absolute bottom-2"
+                    >
+                      View Attachment
+                    </span>
+                  </motion.article>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prev}
+                className="h-10 w-10 rounded-full border border-secondary-dark/70 bg-white flex items-center justify-center hover:bg-primary hover:text-white transition"
+              >
+                <HiChevronLeft className="text-xl" />
+              </button>
+
+              <button
+                onClick={next}
+                className="h-10 w-10 rounded-full border border-secondary-dark/70 bg-white flex items-center justify-center hover:bg-primary hover:text-white transition"
+              >
+                <HiChevronRight className="text-xl" />
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2">
+              {reviews.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setIndex(i)}
+                  className={[
+                    "h-2.5 rounded-full transition-all duration-300",
+                    index === i ? "w-6 bg-primary" : "w-2.5 bg-secondary-dark",
+                  ].join(" ")}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+      <AttachmentModal
+        image={reviewAttachement}
+        isOpen={reviewAttachement ? true : false}
+        onClose={() => setReviewAttachement("")}
+        allowDownload
+      />
+    </>
   );
 };
 
