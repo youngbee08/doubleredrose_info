@@ -175,7 +175,7 @@ const Affiliate: React.FC = () => {
 
                   <div className="mt-6 flex items-center justify-center">
                     <div className="rounded-md border border-secondary-dark/70 px-3 py-1 text-[10px] font-bold text-neutral-soft">
-                      PDF
+                      PPTX
                     </div>
                   </div>
                 </div>
@@ -186,12 +186,12 @@ const Affiliate: React.FC = () => {
             </div>
             <div className="flex md:justify-start lg:justify-end">
               <a
-                href={assets.regPackages}
+                href={"/complan.pptx"}
                 download
                 className="inline-flex w-full md:w-fit items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-bold text-white shadow-md shadow-black/10 hover:brightness-110 transition"
               >
                 <FaDownload />
-                Download Package Details (PDF)
+                Download Package Details (PPTX)
               </a>
             </div>
           </div>
